@@ -1,22 +1,25 @@
 package camel_test.activemq;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.broker.BrokerService;
 import org.apache.camel.CamelContext;
 import org.apache.camel.ConsumerTemplate;
+import org.apache.camel.component.activemq.ActiveMQComponent;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
-
 import javax.jms.ConnectionFactory;
 
 public class ActiveMQController {
+    private CamelContext context;
 
-    public static void monitorOutgoing() {
+    public ActiveMQController(CamelContext context) throws Exception {
+        this.context = context;
+        ConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
+        context.addComponent("activemq", ActiveMQComponent.jmsComponentAutoAcknowledge(connectionFactory));
+    }
+
+    public void monitorOutgoing() {
         try {
-            CamelContext context = new DefaultCamelContext();
-
-            ConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
-            context.addComponent("jms", JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
-
             context.addRoutes(new FileToActiveMQRoute());
 
             context.start();
@@ -26,13 +29,8 @@ public class ActiveMQController {
         }
     }
 
-    public static void monitorIncoming() {
+    public void monitorIncoming() {
         try {
-            CamelContext context = new DefaultCamelContext();
-
-            ConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
-            context.addComponent("jms", JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
-
             context.addRoutes(new ActiveMQToFileRoute());
 
             context.start();
