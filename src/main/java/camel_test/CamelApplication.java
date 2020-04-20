@@ -16,6 +16,7 @@ public class CamelApplication {
 
         // Persists the Camel context until a graceful exit or shutdown
         Main main = new Main();
+        context.start();
 
         ActiveMQController activeMQController = new ActiveMQController(context);
         activeMQController.monitorIncoming();
@@ -24,7 +25,7 @@ public class CamelApplication {
         PostgreSQLController postgreSQLController = new PostgreSQLController(context);
         postgreSQLController.manageDB();
 
-        Registry
+
 
         main.run(args);
 

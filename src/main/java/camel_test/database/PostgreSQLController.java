@@ -30,10 +30,9 @@ public class PostgreSQLController {
         context.getRegistry().bind("samplePostgreSQL", setupDataSource());
 
         context.addRoutes(new ActiveMQToPostgreSQLRoute());
-        context.start();
 
         ProducerTemplate producerTemplate = context.createProducerTemplate();
-        producerTemplate.sendBody("jdbc:samplePostgreSQL", "INSERT INTO test_db_camel VALUES('1', 'hello')");
+        producerTemplate.sendBody("jdbc:samplePostgreSQL", "INSERT INTO test_db_camel (\"message\") VALUES('test3')");
 
             System.out.println(context.getRoutes());
             System.out.println(context.getEndpoints());

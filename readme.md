@@ -19,7 +19,11 @@ Open localhost:8161 and create a queue named "send_queue", "receive_queue", and 
 PostgreSQL
 ```
 1. Start local postgres on default 5432
-2. Create table test_db_camel in default postgres db
+2. Open psql at console
+3. CREATE TABLE test_db_camel (                                                                                                                                            
+    id INT GENERATED ALWAYS AS IDENTITY,                                                                                                                                               
+    message VARCHAR NOT NULL DEFAULT 'No message passed'                                                                                                                               
+    );
 ```
 
 ##
@@ -30,12 +34,10 @@ PostgreSQL
 3. Endpoint: Entity that represents a single communication node.
 4. Producer / Consumer Templates: Provides model for performing actions on a Route
 5. Registry: List of Maps <Endpoints, Connections> bound to Context
-6. Component: A class that represents a common protocol or use-case. ie Dropbox, Gmail, ActiveMQ
+6. Component: A class which represents a common protocol or use-case. ie Dropbox, Gmail, ActiveMQ
 
 ### Useful Links
-Data Marshalling: https://camel.apache.org/manual/latest/data-format.html
+Data Format: https://camel.apache.org/manual/latest/data-format.html
 
 Core Components: https://camel.apache.org/components/latest/index.html
 
-
-Examples: Git/Github, Dropbox, 
