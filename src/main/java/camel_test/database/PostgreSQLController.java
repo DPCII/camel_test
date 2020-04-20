@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 
 public class PostgreSQLController {
     private CamelContext context;
-    private String url = "jdbc:postgresql://localhost:5432/test_db_camel";
+    private String url = "jdbc:postgresql://localhost:5432/postgres";
 
     public PostgreSQLController(CamelContext context) {
         this.context = context;
@@ -33,6 +33,8 @@ public class PostgreSQLController {
         context.start();
 
         ProducerTemplate producerTemplate = context.createProducerTemplate();
+        producerTemplate.sendBody("jdbc:samplePostgreSQL", "INSERT INTO test_db_camel VALUES('1', 'hello')");
+
             System.out.println(context.getRoutes());
             System.out.println(context.getEndpoints());
 
