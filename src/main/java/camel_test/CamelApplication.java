@@ -5,6 +5,7 @@ import org.apache.camel.CamelContext;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.main.Main;
 import camel_test.activemq.ActiveMQController;
+import org.apache.camel.spi.Registry;
 
 public class CamelApplication {
 
@@ -22,6 +23,8 @@ public class CamelApplication {
 
         PostgreSQLController postgreSQLController = new PostgreSQLController(context);
         postgreSQLController.manageDB();
+
+        Registry
 
         main.run(args);
 
