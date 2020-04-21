@@ -1,11 +1,9 @@
 package camel_test;
 
-import camel_test.database.PostgreSQLController;
 import org.apache.camel.CamelContext;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.main.Main;
 import camel_test.activemq.ActiveMQController;
-import org.apache.camel.spi.Registry;
 
 public class CamelApplication {
 
@@ -19,13 +17,9 @@ public class CamelApplication {
         context.start();
 
         ActiveMQController activeMQController = new ActiveMQController(context);
-        activeMQController.monitorIncoming();
-        activeMQController.monitorOutgoing();
-
-        PostgreSQLController postgreSQLController = new PostgreSQLController(context);
-        postgreSQLController.manageDB();
-
-
+        activeMQController.writeFileToDirectoryFromActiveMQ();
+        activeMQController.sendFileToActiveMQ();
+        activeMQController.writeToPostgres();
 
         main.run(args);
 

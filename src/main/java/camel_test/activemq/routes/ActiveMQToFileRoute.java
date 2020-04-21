@@ -1,4 +1,4 @@
-package camel_test.activemq;
+package camel_test.activemq.routes;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
