@@ -32,10 +32,6 @@ public class ActiveMQController {
         try {
             context.addRoutes(new ActiveMQToFileRoute());
 
-            ConsumerTemplate consumerTemplate = context.createConsumerTemplate();
-            String message = consumerTemplate.receiveBody("seda:receive", String.class);
-
-            System.out.println(message);
         }
         catch(Exception e) {
             e.printStackTrace();

@@ -31,13 +31,6 @@ public class PostgreSQLController {
 
         context.addRoutes(new ActiveMQToPostgreSQLRoute());
 
-        ProducerTemplate producerTemplate = context.createProducerTemplate();
-        producerTemplate.sendBody("jdbc:samplePostgreSQL", "INSERT INTO test_db_camel (\"message\") VALUES('test3')");
-
-            System.out.println(context.getRoutes());
-            System.out.println(context.getEndpoints());
-
-
         }
         catch(Exception e) {
             e.printStackTrace();
