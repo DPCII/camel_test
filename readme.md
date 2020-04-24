@@ -1,8 +1,10 @@
 # Camel Demo
 
-Camel is a lightweight framework that integrates different data formats.
-It subscribes and observes endpoints of different formats and passes
-along messages after translating the data as necessary. 
+Camel is a lightweight framework that integrates networked systems.
+It links information sources of different formats and protocols through a
+system of abstracted processes, which build into a sustainable and re-usable composite
+system. It receives data in any format as 'messages' and passes them along after translating
+them or performing operations on them as necessary. 
 
 ##
 
