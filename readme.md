@@ -29,15 +29,20 @@ PostgreSQL
 ##
 
 ### Key Architecture
-1. Camel Context: Integrates component elements of camel, similar to SpringContext
-2. Route / RouteBuilder: Establishes a linking entity between two communication nodes
+1. Camel Context: A class which integrates all elements of camel, similar to SpringContext.
+2. Route / RouteBuilder: Establishes a linking entity between two communication nodes.
 3. Endpoint: Entity that represents a single communication node.
-4. Producer / Consumer Templates: Provides model for performing actions on a Route
-5. Registry: List of Maps <Endpoints, Connections> bound to Context
-6. Component: A class which represents a common protocol or use-case. ie Dropbox, Gmail, ActiveMQ
+4. TypeConverters: Performs type conversion under the hood and abstracted away from the larger operation.
+5. Registry: An abstraction utility which stores and returns the key objects used by Camel. It is bound to the Context.
+6. Component: A class which represents a common protocol or use-case. ie Dropbox, Gmail, ActiveMQ.
+7. Message: The entity which represents transferred data. Structured into Header, Attachment, Body. Data type agnostic.
+8. Exchange: Encapsulates the message entity. May contain an InOnly message, or an InOut message which includes the
+destination's response.
 
 ### Useful Links
 Data Format: https://camel.apache.org/manual/latest/data-format.html
 
 Core Components: https://camel.apache.org/components/latest/index.html
+
+Core Concepts: https://livebook.manning.com/book/camel-in-action/chapter-1/1
 
